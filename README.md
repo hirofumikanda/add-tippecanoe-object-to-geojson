@@ -1,6 +1,6 @@
 # GeoJSON Tippecanoe オブジェクト追加ツール
 
-このスクリプトは、GeoJSONファイルの各フィーチャーに`tippecanoe`オブジェクトを追加し、プロパティから対応する値を移動させるツールです。
+このスクリプトは、GeoJSONファイル（ndjson形式）の各フィーチャーに`tippecanoe`オブジェクトを追加し、プロパティから対応する値を移動させるツールです。
 
 ## 動機
 - [felt/tippecanoe](https://github.com/felt/tippecanoe)を使用してGeoJSONからMVTを作成する場合、GeoJSONをndjson形式にしておくことで、-Pオプション（並列処理）を使用することができます。
@@ -10,7 +10,7 @@
 
 ## 概要
 
-GeoJSONファイル内のフィーチャーのプロパティに含まれる以下の項目を`tippecanoe`オブジェクトに移動します：
+GeoJSONファイル（ndjson形式）内のフィーチャーのプロパティに含まれる以下の項目を`tippecanoe`オブジェクトに移動します：
 
 - `minzoom`: 最小ズームレベル（デフォルト: 0）
 - `maxzoom`: 最大ズームレベル（デフォルト: 22）
@@ -55,6 +55,8 @@ python add-tippecanoe-object-to-geojson.py input.geojson output.geojson
 }
 ```
 
+* 実際はndjson形式のため、1Featureが1行に記述されていますが、わかりやすくするため、改行を入れています。
+
 ## 出力例
 
 ```json
@@ -75,13 +77,15 @@ python add-tippecanoe-object-to-geojson.py input.geojson output.geojson
 }
 ```
 
+* 実際はndjson形式のため、1Featureが1行に記述されていますが、わかりやすくするため、改行を入れています。
+
 ## 要件
 
 - Python 3.x
 
 ## 注意事項
 
-- 入力ファイルは1行に1つのGeoJSONフィーチャーが記載されている形式を想定
+- **入力ファイルは1行に1つのGeoJSONフィーチャーが記載されている形式(ndjson)を想定**
 - `properties`が存在しないフィーチャーはそのまま出力
 - `minzoom`、`maxzoom`、`layer`以外のプロパティは変更されません
 
